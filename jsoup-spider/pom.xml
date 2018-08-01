@@ -13,35 +13,6 @@
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 	</properties>
 	
-	<repositories>
-		<repository>
-			<id>netease</id>
-			<url>http://mvn.hz.netease.com/artifactory/libs-releases</url>
-		</repository>
-		<repository>
-			<id>central</id>
-			<name>repo</name>
-			<url>http://mvn.hz.netease.com/artifactory/repo1-cache</url>
-		</repository>
-		<repository>
-			<id>maven</id>
-			<name>Slowly office site</name>
-			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-	</repositories>
-	
-	<distributionManagement>
-		<snapshotRepository>
-			<id>netease_snapshots</id>
-			<name>netease_snapshots</name>
-			<url>http://mvn.hz.netease.com/artifactory/libs-snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>netease_repo</id>
-			<name>netease_repo</name>
-			<url>http://mvn.hz.netease.com/artifactory/libs-releases</url>
-		</repository>
-	</distributionManagement>
 	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
