@@ -36,6 +36,36 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.19</version>
 		</dependency>
+		<!-- utils -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-lgpl</artifactId>
+				<version>1.9.7</version>
+			</dependency>
+			<!-- <dependency> http接口接受json格式参数必须的包 <groupId>com.fasterxml.jackson.core</groupId> 
+				<artifactId>jackson-databind</artifactId> <version>2.5.0</version> </dependency> -->
+
+			<dependency>  <!-- http接口接受json格式参数必须的包 -->
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.7.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.7.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>2.7.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-lgpl</artifactId>
+				<version>1.9.7</version>
+			</dependency>
 	</dependencies>
 	 <build>
         <plugins>
@@ -57,7 +87,7 @@
                             <transformers>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.yuanhong.li.ApplicationMain</mainClass>
+                                    <mainClass>org.yuanhong.li.ApplicationHuajiao</mainClass>
                                 </transformer>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">

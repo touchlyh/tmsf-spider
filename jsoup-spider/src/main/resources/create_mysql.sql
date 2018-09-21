@@ -30,3 +30,15 @@ CREATE TABLE `sp_project` (
   `total` varchar(128) DEFAULT NULL COMMENT '总套数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COMMENT='项目表';
+
+CREATE TABLE `hj_video_info` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `author_id` varchar(128) DEFAULT NULL COMMENT '作者ID',
+  `uid` varchar(128) DEFAULT NULL COMMENT '主播ID',
+  `uid_name` varchar(256) DEFAULT NULL COMMENT '主播姓名',
+  `play_count` int(16) DEFAULT NULL COMMENT '播放次数',
+  `mp4` varchar(256) DEFAULT NULL COMMENT '视频地址',
+  `gmt_create` bigint(20) DEFAULT NULL COMMENT '入库时间戳',
+  `md5sum` varchar(256) DEFAULT NULL COMMENT '加密唯一键',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='HJ视频表';
