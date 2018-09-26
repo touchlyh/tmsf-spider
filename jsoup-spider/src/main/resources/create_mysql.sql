@@ -42,3 +42,30 @@ CREATE TABLE `hj_video_info` (
   `md5sum` varchar(256) DEFAULT NULL COMMENT '加密唯一键',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='HJ视频表';
+
+
+CREATE TABLE `net_comic_info` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `source` varchar(32) DEFAULT NULL COMMENT '来源',
+  `comic_id` varchar(64) DEFAULT NULL COMMENT 'comicId',
+  `title` varchar(128) DEFAULT NULL COMMENT '标题',
+  `author` varchar(128) DEFAULT NULL COMMENT '作者',
+  `raw_tag` varchar(256) DEFAULT NULL COMMENT '标签',
+  `cover` varchar(256) DEFAULT NULL COMMENT '封面图',
+  `description` varchar(512) DEFAULT NULL COMMENT '描述',
+  `status` int(16) DEFAULT NULL COMMENT '状态 0-初始化 1-已下载 2-已同步',
+  PRIMARY KEY (`id`),
+  INDEX IDX_COMIC_ID (`comic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='comic主表';
+
+CREATE TABLE `net_comic_section` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `source` varchar(32) DEFAULT NULL COMMENT '来源',
+  `comic_id` varchar(64) DEFAULT NULL COMMENT 'comicId',
+  `section_id` varchar(64) DEFAULT NULL COMMENT '章节ID',
+  `section_name` varchar(64) DEFAULT NULL COMMENT '章节名',
+  `sort` varchar(32) DEFAULT NULL COMMENT '顺序',
+  `status` int(16) DEFAULT NULL COMMENT '状态 0-初始化 1-已下载 2-已同步',
+  PRIMARY KEY (`id`),
+  INDEX IDX_COMIC_ID (`comic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='comic章节';
