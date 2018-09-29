@@ -10,10 +10,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.yuanhong.li.comic.ComicInfo;
+import org.yuanhong.li.comic.ComicParser;
 import org.yuanhong.li.comic.ComicSection;
 import org.yuanhong.li.utils.JacksonUtil;
 
-public class NteComicParser {
+public class NteComicParser implements ComicParser{
 
 	public ComicInfo getMainInfo(String comicId) {
 		String url = "https://h5.manhua.163.com/source/"+comicId;

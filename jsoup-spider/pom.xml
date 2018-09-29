@@ -6,14 +6,14 @@
 	<version>1.0.0</version>
 	<name>jsoup-spider</name>
 	<description>jsoup-spider</description>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 	</properties>
-	
-	
+
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
@@ -37,76 +37,83 @@
 			<version>5.1.19</version>
 		</dependency>
 		<!-- utils -->
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-core-lgpl</artifactId>
-				<version>1.9.7</version>
-			</dependency>
-			<!-- <dependency> http接口接受json格式参数必须的包 <groupId>com.fasterxml.jackson.core</groupId> 
-				<artifactId>jackson-databind</artifactId> <version>2.5.0</version> </dependency> -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-lgpl</artifactId>
+			<version>1.9.7</version>
+		</dependency>
+		<!-- <dependency> http接口接受json格式参数必须的包 <groupId>com.fasterxml.jackson.core</groupId> 
+			<artifactId>jackson-databind</artifactId> <version>2.5.0</version> </dependency> -->
 
-			<dependency>  <!-- http接口接受json格式参数必须的包 -->
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>2.7.4</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-annotations</artifactId>
-				<version>2.7.4</version>
-			</dependency>
+		<dependency>  <!-- http接口接受json格式参数必须的包 -->
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.7.4</version>
+		</dependency>
 
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-core</artifactId>
-				<version>2.7.4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-mapper-lgpl</artifactId>
-				<version>1.9.7</version>
-			</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-lgpl</artifactId>
+			<version>1.9.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
 	</dependencies>
-	 <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>1.7</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.7</version>
 
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <!-- <finalName>my-spring-app</finalName> -->
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
-                            <transformers>
-                                <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.yuanhong.li.ApplicationHuajiao</mainClass>
-                                </transformer>
-                                <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.handlers</resource>
-                                </transformer>
-                                <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.schemas</resource>
-                                </transformer>
-                                <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.tooling</resource>
-                                </transformer>
-                            </transformers>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<!-- <finalName>my-spring-app</finalName> -->
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>org.yuanhong.li.ApplicationComic</mainClass>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.tooling</resource>
+								</transformer>
+							</transformers>
 
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

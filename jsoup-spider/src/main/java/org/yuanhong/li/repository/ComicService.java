@@ -82,6 +82,31 @@ public class ComicService {
 		throw new RuntimeException("getByComicIdAndStatus found more than one record."+comicId);
 	}
 	
+	public List<ComicInfo> getComicListByStatus(String source, int status) {
+		if(source == null ) {
+			return null;
+		}
+		String sql = "select * from net_comic_info where source=? and status=?";
+		List<ComicInfo> infoList =  jdbcTemplate.query(sql, new Object[] {source, status}, new RowMapper<ComicInfo>() {
+
+			@Override
+			public ComicInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
+				ComicInfo info = new ComicInfo();
+				info.setId(rs.getLong("id"));
+				info.setAuthor(rs.getString("author"));
+				info.setComicId(rs.getString("comic_id"));
+				info.setCover(rs.getString("cover"));
+				info.setDescription(rs.getString("description"));
+				info.setRawTags(rs.getString("raw_tag"));
+				info.setSource(rs.getString("source"));
+				info.setStatus(rs.getInt("status"));
+				info.setTitle(rs.getString("title"));
+				return info;
+			}
+		});
+		return infoList;
+	}
+	
 	public boolean saveComicInfo(final ComicInfo info) {
 		String sql = "insert into net_comic_info(comic_id,source,title,author,description,raw_tag,cover,status) values(?,?,?,?,?,?,?,?)";
 		PreparedStatementSetter ps = new PreparedStatementSetter() {
@@ -105,8 +130,8 @@ public class ComicService {
 		PreparedStatementSetter ps = new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setLong(1, id);
-				ps.setInt(8, status);
+				ps.setInt(1, status);
+				ps.setLong(2, id);
 			}
 		};
 		return jdbcTemplate.update(sql, ps) == 1;
@@ -136,12 +161,36 @@ public class ComicService {
 		return sectionList;
 	}
 	
-	public List<ComicSection> getSectionListByStatus(String source, String comicId, int status) {
+	public List<ComicSection> getSectionListByComicAndStatus(String source, String comicId, int status) {
 		if(source == null || comicId == null) {
 			return null;
 		}
 		String sql = "select * from net_comic_section where source=? and comic_id=? and status=?";
 		List<ComicSection> sectionList =  jdbcTemplate.query(sql, new Object[] {source,comicId, status}, new RowMapper<ComicSection>() {
+
+			@Override
+			public ComicSection mapRow(ResultSet rs, int rowNum) throws SQLException {
+				ComicSection section = new ComicSection();
+				section.setId(rs.getLong("id"));
+				section.setComicId(rs.getString("comic_id"));
+				section.setSectionId(rs.getString("section_id"));
+				section.setSectionName(rs.getString("section_name"));
+				section.setSort(rs.getString("sort"));
+				section.setSource(rs.getString("source"));
+				section.setStatus(rs.getInt("status"));
+				return section;
+			}
+		});
+		
+		return sectionList;
+	}
+	
+	public List<ComicSection> getSectionListByStatus(String source,int status) {
+		if(source == null) {
+			return null;
+		}
+		String sql = "select * from net_comic_section where source=? and status=?";
+		List<ComicSection> sectionList =  jdbcTemplate.query(sql, new Object[] {source, status}, new RowMapper<ComicSection>() {
 
 			@Override
 			public ComicSection mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -181,8 +230,8 @@ public class ComicService {
 		PreparedStatementSetter ps = new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setLong(1, id);
-				ps.setInt(8, status);
+				ps.setInt(1, status);
+				ps.setLong(2, id);
 			}
 		};
 		return jdbcTemplate.update(sql, ps) == 1;

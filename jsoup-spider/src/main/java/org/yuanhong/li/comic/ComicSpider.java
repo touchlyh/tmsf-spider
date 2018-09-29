@@ -1,4 +1,4 @@
-package org.yuanhong.li.comic.nte;
+package org.yuanhong.li.comic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,11 +10,11 @@ import org.yuanhong.li.comic.ComicInfo;
 import org.yuanhong.li.comic.ComicSection;
 import org.yuanhong.li.repository.ComicService;
 
-public class NteComicSpider {
+public class ComicSpider {
 	
-	private String source = "NTE";
+	private String source;
 
-	private NteComicParser nteComicParser;
+	private ComicParser comicParser;
 	
 	private ComicService comicService;
 	
@@ -24,7 +24,7 @@ public class NteComicSpider {
 			System.out.println("already exisited in db. comicId="+comicId);
 			return true;
 		}
-		info = nteComicParser.getMainInfo(comicId);
+		info = comicParser.getMainInfo(comicId);
 		if(info == null) {
 			System.out.println("http parse main info failed. comicId="+comicId);
 			return false;
@@ -38,7 +38,7 @@ public class NteComicSpider {
 	}
 	
 	public boolean doCrawelSections(String comicId) {
-		List<ComicSection> httpSectionList = nteComicParser.getSectionList(comicId);
+		List<ComicSection> httpSectionList = comicParser.getSectionList(comicId);
 		if(httpSectionList == null) {
 			System.out.println("http get section list empty. comicId="+comicId);
 			return false;
@@ -82,12 +82,12 @@ public class NteComicSpider {
 		this.source = source;
 	}
 
-	public NteComicParser getNteComicParser() {
-		return nteComicParser;
+	public ComicParser getComicParser() {
+		return comicParser;
 	}
 
-	public void setNteComicParser(NteComicParser nteComicParser) {
-		this.nteComicParser = nteComicParser;
+	public void setComicParser(ComicParser comicParser) {
+		this.comicParser = comicParser;
 	}
 
 	public ComicService getComicService() {
