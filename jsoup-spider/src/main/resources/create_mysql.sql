@@ -69,3 +69,15 @@ CREATE TABLE `net_comic_section` (
   PRIMARY KEY (`id`),
   INDEX IDX_COMIC_ID (`comic_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='comic章节';
+
+
+CREATE TABLE `mm_page_info` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `href` varchar(32) DEFAULT NULL COMMENT 'hrefID',
+  `title` varchar(128) DEFAULT NULL COMMENT '标题',
+  `publish` varchar(64) DEFAULT NULL COMMENT '发布时间',
+  `view_num` varchar(64) DEFAULT NULL COMMENT '浏览数',
+  `gmt_create` datetime NOT NULL COMMENT '爬取时间',
+  PRIMARY KEY (`id`),
+  INDEX IDX_HREF_ID (`href`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='图片集合列表';

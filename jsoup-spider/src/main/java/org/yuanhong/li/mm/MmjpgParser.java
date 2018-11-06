@@ -29,7 +29,6 @@ public class MmjpgParser {
 			}
 			
 			try {
-				@SuppressWarnings("unused")
 				Document doc = Jsoup.connect(url)
 						.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
 						.header("Accept-Encoding", "gzip, deflate")
@@ -55,7 +54,7 @@ public class MmjpgParser {
 				}
 				
 				page++;
-				Thread.sleep(100);
+				Thread.sleep(2);
 				
 			}catch (Exception e) {
 				e.printStackTrace();

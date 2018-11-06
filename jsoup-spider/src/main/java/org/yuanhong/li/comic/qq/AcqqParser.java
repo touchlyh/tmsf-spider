@@ -18,7 +18,6 @@ public class AcqqParser implements ComicParser{
 	public ComicInfo getMainInfo(String comicId) {
 		String url = "http://m.ac.qq.com/comic/index/id/"+comicId;
 		try {
-			@SuppressWarnings("unused")
 			Document doc = Jsoup.connect(url)
 					.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
 					.header("Accept-Encoding", "gzip, deflate")
